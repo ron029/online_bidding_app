@@ -1,0 +1,23 @@
+<% provide(:title, 'Sign up')%>
+<h1>Sign up</h1>
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <div class="mb-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :email_address %>
+    <%= f.text_field :email_address, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :password_confirmation, 'Confirmation' %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+  <button type="submit" class="btn btn-primary form-control">Submit</button>
+<% end %>
+or <%= link_to 'Log in', login_path %>
