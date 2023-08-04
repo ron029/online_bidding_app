@@ -4,7 +4,7 @@
 class BidsController < ApplicationController
   before_action :an_admin, only: %i[stop_bid]
   def new; end
-  
+
   def show; end
 
   def stop_bid

@@ -7,9 +7,9 @@ class Bidder < ApplicationRecord
   belongs_to :user
   belongs_to :product
 
-  # validates :user_id, presence: true
-  # validates :product_id, presence: true
-  # validates :bid_amount, presence: true
+  validates :user_id, presence: true
+  validates :product_id, presence: true
+  validates :bid_amount, presence: true
 
   def update_product_current_lowest_bid
     product = Product.find(product_id)

@@ -4,8 +4,8 @@
 class Product < ApplicationRecord
   before_create :fill_current_lowest_bid
 
-  # belongs_to :user
-  # has_many :bidders
+  belongs_to :user
+  has_many :bidders
 
   enum status: { active: 0, sold: 2 }
   validates :lowest_allowable_bid, :starting_bid_price, presence: true, numericality: { greater_than: 0 }

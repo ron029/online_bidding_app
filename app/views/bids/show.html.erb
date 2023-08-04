@@ -10,4 +10,7 @@
       Bid Amount: <%= bidder.bid_amount %>
     </li>
   <% end %>
+  <% if @bidders.empty? %>
+    <p>Nothing to show.</p>
+  <% end %>
 </ul>
