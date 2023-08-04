@@ -1,0 +1,37 @@
+<p><%= @low %></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">More Info</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= @product.name %></td>
+      <td><%= @product.description %></td>
+      <td>
+        <p>Status: <%= @product.status %></p>
+        <p>Starting Bid Price: <%= @product.starting_bid_price %></p>
+        <p>Lowest Allowable Bid: <%= @product.lowest_allowable_bid %></p>
+        <p>Bidding Expiration: <%= @product.bidding_expiration %></p>
+      </td>
+      <td>
+        <% if admin?(current_user)  %>
+            <%= link_to 'Place Bid', '#', class: 'btn btn-success' %>
+        <% else %>
+            <%= form_for(:bid, url: bids_path) do |f| %>
+                <%= f.hidden_field :product_id, value: @product.id %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.number_field :bid_amount, class: "form-control price", placeholder: 'Place your bid'%>
+                <input type="submit" value="Send Bid" class="btn btn-success form-control">
+            <% end %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

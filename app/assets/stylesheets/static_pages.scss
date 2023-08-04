@@ -6,6 +6,47 @@
     margin-top: 60px;
 }
 
+/* pagination */
+
+div.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    a {
+        padding: 5px 10px;
+        border: 1px solid #007bff; /* Use a different border color for the current page */
+        color: #007bff; /* Use a different text color for the current page */
+        text-decoration: none;
+        background-color: #f0f0f0; /* Use a different background color for the current page */
+        font-weight: bold; /* Make the current page link bold */
+    }
+    a.previous_page {
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        color: #333;
+        text-decoration: none;
+        background-color: #fff;
+        margin-right: 5px; /* Add spacing between the links */
+    }
+    a.next_page {
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        color: #333;
+        text-decoration: none;
+        background-color: #fff;
+        margin-left: 5px; /* Add spacing between the links */
+    }
+}
+
+div.pagination .current {
+    padding: 5px 10px;
+    border: 1px solid #262d35; /* Use a different border color for the current page */
+    color: #bec5cc; /* Use a different text color for the current page */
+    text-decoration: none;
+    background-color: #3f414e; /* Use a different background color for the current page */
+    font-weight: bold; /* Make the current page link bold */
+}
+  
 /* products container and items */
 
 .products {
@@ -41,6 +82,13 @@
     }
 }
 
+.product_info {
+    display: block;
+    margin: 0;
+    span {
+        font-weight: bold;
+    }
+}
 
 /* footer */
 footer {

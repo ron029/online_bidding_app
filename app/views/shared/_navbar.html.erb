@@ -6,37 +6,24 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+<% if current_user %>
+  <% if admin?(current_user) %>
+        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="/">Products</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/show_all_bid">Bids</a></li>
+  <% else %>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Products</a></li>
+  <% end %>
       </ul>
-      <% if true %>
         <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%= '#' %>
-          </a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Hi, <%= camelcase(current_user.name) %> ! </a>
           <ul class="dropdown-menu">
             <li><%= link_to 'Profile', '#', class: 'dropdown-item' %></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><%= link_to "Log out", '#', method: :delete, class: "dropdown-item" %></li>
+            <li><%= link_to "Log out", logout_path, method: :delete, class: "dropdown-item" %></li>
           </ul>
         </div>
-      <% else %>
-        <!--<div class="nav-item d-flex">
-          <%#= link_to "Log in", '#', class: 'nav-link' %>
-        </div> -->
-      <% end %>
-      <%# <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> %>
+<% end %>
     </div>
   </div>
 </nav>

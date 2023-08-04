@@ -1,0 +1,13 @@
+<h1>Product Details</h1>
+<p>Product Name: <%= @product.name %></p>
+<p>Description: <%= @product.description %></p>
+
+<h2>Bidders for <%= @product.name %></h2>
+<ul>
+  <% @bidders.each do |bidder| %>
+    <li>
+      User: <%= bidder.user.name %>
+      Bid Amount: <%= bidder.bid_amount %>
+    </li>
+  <% end %>
+</ul>

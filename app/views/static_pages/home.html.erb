@@ -1,2 +1,67 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% if admin?(current_user) %>
+    <%= link_to 'New Product', new_product_path, class: 'btn btn-primary btn-md bid-btn', role: 'button'%>
+
+    <table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Other Info</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @products.each do |product| %>
+        <tr>
+            <th scope="row">1</th>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td>
+                <p class="product_info"><span>Status:</span> <%= product.status %></p>
+                <p class="product_info"><span>Starting Bid Price:</span> <%= product.starting_bid_price %></p>
+                <p class="product_info"><span>Lowest Allowable Bid:</span> <%= product.lowest_allowable_bid %></p>
+                <p class="product_info"><span>Bidding Expiration:</span> <%= product.bidding_expiration %></p>
+            </td>
+            <td>
+                <% if admin?(current_user)  %>
+                    <%= link_to 'Stop Bid', "/stop_bid/#{product.id}", class: 'btn btn-danger', data: { confirm: 'Are you sure you want to stop the bid?' } %>
+                    <%= link_to 'Show Bid', "/show_bid/#{product.id}", class: 'btn btn-primary' %>
+                <% else %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+<% else %>
+    <div class="products">
+        <% if @bids %>
+            <hr>
+            <p>Your Bids Here, </p>
+            <% @bids.each do |product1| %>
+                    <div class="item">
+                        <span>PHP <%= product1.starting_bid_price %></span>
+                        <p class="product_name"><%= product1.name %></p>
+                        <p class="product_desc"><%= product1.description %></p>
+                        <p><%= product1.status %> - <%= product1.lowest_allowable_bid %></p>
+                        <hr>
+                        <%= link_to 'Learn More', product_path(product1.id), class: 'btn btn-success btn-md bid-btn', role: 'button'%>
+                    </div>
+            <% end %>
+        <% end %>
+        <hr>
+        <p>Available Products for bids,
+        <% @products.each do |product|%>
+            <div class="item">
+                <span>PHP <%= product.starting_bid_price %></span>
+                <p class="product_name"><%= product.name %></p>
+                <p class="product_desc"><%= product.description %></p>
+                <p><%= product.status %> - <%= product.lowest_allowable_bid %></p>
+                <hr>
+                <%= link_to 'Learn More', product_path(product.id), class: 'btn btn-success btn-md bid-btn', role: 'button'%>
+            </div>
+        <% end %>
+    </div> 
+<% end %>
+<%= will_paginate @products %>

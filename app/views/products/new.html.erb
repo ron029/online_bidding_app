@@ -1,0 +1,26 @@
+<% provide(:title, 'New Product')%>
+<h1>New Product</h1>
+<%= form_for(@product) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <div class="mb-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :lowest_allowable_bid %>
+    <%= f.number_field :lowest_allowable_bid, class: 'form-control price' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :starting_bid_price %>
+    <%= f.number_field :starting_bid_price, class: 'form-control price' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :bidding_expiration %>
+    <%= f.datetime_field :bidding_expiration, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+  <button type="submit" class="btn btn-primary form-control">Submit</button>
+<% end %>
