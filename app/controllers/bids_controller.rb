@@ -25,12 +25,20 @@ class BidsController < ApplicationController
   end
 
   def create
-    @bid = Bidder.new(bid_params)
-    if @bid.save
-      flash[:success] = 'You bid has been recorded.'
-      redirect_to root_url
+    @bid = current_user.bidders.build(bid_params)
+    time_remaining = @bid.product.bidding_expiration.to_time - Time.now
+
+    if @bid.bid_amount.present? && @bid.bid_amount >= @bid.product.lowest_allowable_bid && time_remaining > 0
+      if @bid.save
+        flash[:success] = 'Bid was successfully created.'
+        redirect_to root_url
+      else
+        flash.now[:danger] = 'No empty'
+        redirect_to product_path(params[:bid][:product_id])
+      end
     else
-      flash.now[:danger] = 'Theres an error in you bid'
+      flash[:danger] = "Sorry, can't bid at this time"
+      redirect_to product_path(params[:bid][:product_id])
     end
   end
 

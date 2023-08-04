@@ -22,7 +22,7 @@ module UsersHelper
   def admin?(user)
     return false unless current_user
 
-    user.is_an_admin_new
+    user.is_an_admin_new.to_i > 0
   end
 
   def an_admin

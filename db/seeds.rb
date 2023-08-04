@@ -7,8 +7,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: 'Ron Mark', email_address: 'bonifacioronmark@gmail.com', password: 'foobar', password_confirmation: 'foobar')
-User.create(name: 'Administrator', email_address: "admin@admin.com", password: "foobar", password_confirmation: "foobar", is_admin: true)
+# User.create(name: 'Administrator', email_address: "admin@admin.com", password: "foobar", password_confirmation: "foobar", is_an_admin_new: 1)
+# User.create(name: 'Ron Mark', email_address: 'bonifacioronmark@gmail.com', password: 'foobar', password_confirmation: 'foobar')
 
 100.times do
   Product.create(
