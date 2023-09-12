@@ -40,11 +40,3 @@
 * Password
 
 ### The platform should have login system.
-
-## The deadline is on Friday 2PM. You'll demo your Web App during our weekly catch-up. Once you are done, kindly submit the following:
-* ERD of the Web App
-* Link of the screen recording of you demoing the Web App from user booking to admin bookings monitoring. You may use any screen recording tool and upload the video on Google Drive or Youtube as an unlisted video. Make sure that your demo has narration, no need to show your face, we just need to see that it works.
-* Cinema Booking Web App URL
-* Test User Email and Password
-* Cinema Admin Dashboard URL
-* Test Admin Email and Password
